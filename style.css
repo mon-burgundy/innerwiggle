@@ -1,0 +1,36 @@
+/* Helvetica Now Display: drop the licensed web font file into fonts/ to use it; otherwise Helvetica Neue/Arial is used. */
+@font-face{font-family:"Helvetica Now Display";src:url(fonts/HelveticaNowDisplay-Regular.woff2) format("woff2"),url(fonts/HelveticaNowDisplay-Regular.woff) format("woff");font-display:swap}
+html{height:100%}body{margin:0}
+body{
+  position:relative;min-height:100%;height:auto;
+  display:grid;place-items:center;text-align:center;padding:16px;box-sizing:border-box;
+  color:#ffd84d;font-family:"Instrument Serif",Georgia,serif;
+  background:#5aa6d6 url(sky.jpg) center/cover no-repeat;
+}
+main{position:relative;z-index:2;width:100%;max-width:640px;text-shadow:0 1px 12px rgba(40,100,150,.35)}
+h1{margin:0 0 1.2rem;line-height:0}
+h1 img{width:min(960px,92vw);height:auto;position:relative;left:50%;transform:translateX(-50%)}
+.sub{font-style:italic;font-size:clamp(2.2rem,5.5vw,3.2rem);letter-spacing:-.02em;margin:0 0 1.2rem;color:#ffe27a}
+form{margin:0 auto;max-width:480px;display:flex;flex-direction:column;align-items:stretch;gap:16px}
+input[type=text],input[type=email]{
+  width:100%;box-sizing:border-box;border:0;outline:none;border-radius:999px;
+  padding:.8rem 1.25rem;background:#fff;color:#111;text-align:center;text-shadow:none;
+  font:400 1.2rem/1.2 "Helvetica Now Display","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+input::placeholder{color:#a3a3a3}
+input:focus::placeholder{color:transparent}
+input:focus{box-shadow:0 0 0 3px rgba(255,216,77,.9)}
+button{
+  align-self:flex-start;border:0;border-radius:999px;cursor:pointer;
+  padding:.6rem 2.2rem .7rem;background:#ffd84d;color:#111;text-shadow:none;
+  font:italic 400 1.6rem/1.2 "Instrument Serif",Georgia,serif;
+  transition:background .15s,transform .1s;
+}
+button:hover{background:#ffcb1f}
+button:active{transform:scale(.97)}
+button:disabled{opacity:.7;cursor:default}
+.confirm{font-style:italic;font-size:clamp(1.8rem,4.5vw,2.6rem);color:#ffe27a;margin:0}
+[hidden]{display:none!important}
+.hidden{position:absolute;left:-9999px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:600px){h1 img{width:min(340px,82vw)}input[type=text],input[type=email]{font-size:1.1rem}form{gap:12px}button{font-size:1.2rem;padding:.5rem 1.8rem .55rem}}

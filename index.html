@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inner Wiggle — Coming Soon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1><picture><source media="(max-width: 600px)" srcset="coming-soon-stacked.svg" width="460" height="300"><img src="coming-soon.svg" alt="Coming Soon" width="708" height="162"></picture></h1>
+  <p class="sub">get notified</p>
+  <form name="notify" method="POST" action="https://script.google.com/macros/s/AKfycbzTVC4g1GOTGjlvwxVb7kTENpE_GA14VaGBxYyyhSlTRJFM_Y30BVK1DMyT2BaF3VrmzA/exec">
+    <p class="hidden"><label>Leave this empty: <input name="bot-field" tabindex="-1"></label></p>
+    <label class="sr" for="name">Name</label>
+    <input id="name" type="text" name="name" placeholder="name" autocomplete="name">
+    <label class="sr" for="email">Email address</label>
+    <input id="email" type="email" name="email" placeholder="email" autocomplete="email" required>
+    <button type="submit">notify me</button>
+  </form>
+  <p class="confirm" id="confirm" role="status" hidden>thank you! you're on the list.</p>
+</main>
+<script>
+  // Google Apps Script web app that adds each sign-up to the Google Sheet
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzTVC4g1GOTGjlvwxVb7kTENpE_GA14VaGBxYyyhSlTRJFM_Y30BVK1DMyT2BaF3VrmzA/exec';
+
+  const form = document.querySelector('form[name="notify"]');
+  const done = () => {
+    form.hidden = true;
+    document.querySelector('.sub').hidden = true;
+    document.getElementById('confirm').hidden = false;
+  };
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const btn = form.querySelector('button');
+    btn.disabled = true; btn.textContent = 'sending…';
+    const body = new URLSearchParams(new FormData(form));
+    try {
+      // Google doesn't let the page read the reply, so a completed request counts as success
+      await fetch(SHEET_URL, { method: 'POST', mode: 'no-cors', body });
+      done();
+    } catch {
+      btn.disabled = false; btn.textContent = 'try again';
+    }
+  });
+</script>
+</body>
+</html>
