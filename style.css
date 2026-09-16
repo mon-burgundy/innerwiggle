@@ -9,7 +9,7 @@ body{
 }
 main{position:relative;z-index:2;width:100%;max-width:640px;text-shadow:0 1px 12px rgba(40,100,150,.35)}
 h1{margin:0 0 1.2rem;line-height:0}
-h1 img{width:min(960px,92vw);height:auto;position:relative;left:50%;transform:translateX(-50%)}
+h1 img{display:block;width:min(960px,92vw);height:auto;margin-left:50%;transform:translateX(-50%)}
 .sub{font-style:italic;font-size:clamp(2.2rem,5.5vw,3.2rem);letter-spacing:-.02em;margin:0 0 1.2rem;color:#ffe27a}
 form{margin:0 auto;max-width:480px;display:flex;flex-direction:column;align-items:stretch;gap:16px}
 input[type=text],input[type=email]{
